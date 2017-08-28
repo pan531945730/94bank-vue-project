@@ -33,7 +33,7 @@
 </template>
 <script type="text/javascript">
 import api from '../fetch/api'
-import * as _ from '../util/productList'
+import * as _ from '../common/productList'
 export default {
   props: {
     id: String
