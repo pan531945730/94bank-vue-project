@@ -31,7 +31,7 @@ module.exports = {
       '/api': {
         //target: 'http://192.168.2.13:817/',
         //target: 'http://np.94bank.com/',
-        target: 'http://192.168.2.22:806/',
+        target: 'http://192.168.2.31:806/',
         changeOrigin: true,
         pathRewrite: {
           '^/api': '/api'
