@@ -1,26 +1,16 @@
 <template>
   <div id="app">
-    <alert v-show="showAlert"></alert>
-    <toast v-show="showToast"></toast>
-    <loading v-show="loading"></loading>
-    <keep-alive>
-      <router-view v-if="!$route.meta.keepAlive"></router-view>
-    </keep-alive>
-    <router-view v-if="$route.meta.keepAlive"></router-view>
+    <router-view></router-view>
+    <loading v-model="isLoading"></loading>
   </div>
 </template>
 
 <script>
-import alert from '../src/components/alert.vue'
-import toast from '../src/components/toast.vue'
-import loading from '../src/components/loading.vue'
-
-import {mapGetters} from 'vuex'
+import {mapGetters, mapState} from 'vuex'
+import { Loading } from 'vux'
 export default {
   components: {
-    alert,
-    toast,
-    loading
+    Loading
   },
   data () {
     return {
@@ -32,13 +22,16 @@ export default {
 
     }
   },
-  computed: mapGetters([
-    'showAlert',
-    'showToast',
-    'loading'
-  ])
+  computed: {
+    ...mapGetters([
+      'showAlert'
+    ]),
+    ...mapState({
+      isLoading: state => state.load.isLoading
+    })
+  }
 }
 </script>
-<style>
+<style lang="scss">
 @import 'assets/css/reset.css';
 </style>

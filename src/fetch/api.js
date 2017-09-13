@@ -1,6 +1,6 @@
+import Vue from 'vue'
 import axios from 'axios'
 import qs from 'qs'
-import * as _ from '../common/tool'
 axios.defaults.timeout = 5000
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8'
 axios.defaults.baseURL = '/api/Ajax'
@@ -10,14 +10,14 @@ axios.interceptors.request.use((config) => {
   }
   return config
 }, (error) => {
-  _.toast('错误的传参', 'fail')
+  Vue.$vux.toast.text('错误的传参')
   return Promise.reject(error)
 })
 
 axios.interceptors.response.use((res) => {
   return res
 }, (error) => {
-  _.toast('网络异常', 'fail')
+  Vue.$vux.toast.text('网络异常')
   return Promise.reject(error)
 })
 
@@ -29,8 +29,7 @@ export function fetch (url, params) {
           if (resData['S'] === 0) {
             resolve(response.data)
           } else if (resData['S'] === 101) {
-            _.alert('登录超时', 'fail')
-            _.timeOut()
+            Vue.$vux.toast.text('登录超时')
           }
         }, err => {
           reject(err)

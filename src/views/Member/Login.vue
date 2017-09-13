@@ -39,7 +39,7 @@
 <script>
   import { mapActions } from 'vuex'
   import api from '../../fetch/api'
-  import * as _ from '../../common/tool'
+  import * as _ from '../../ui/tool'
   export default {
     data () {
       return {

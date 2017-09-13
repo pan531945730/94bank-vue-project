@@ -1,9 +1,3 @@
-import siftFinance from '@/views/Product/siftFinanceList.vue'
-import steward from '@/views/Product/stewardList.vue'
-import AccountCenter from '@/views/Member/AccountCenter.vue'
-import ProductDetail from '@/views/Product/ProductDetail.vue'
-import Login from '@/views/Member/Login.vue'
-
 // 配置路由规则
 const routes = [
   {
@@ -12,25 +6,35 @@ const routes = [
   },
   {
     path: '/Product/siftFinance',
-    component: siftFinance,
+    component: function (resolve) {
+      require(['../views/Product/siftFinanceList.vue'], resolve)
+    },
     meta: {keepAlive: true}
   },
   {
     path: '/Product/steward',
-    component: steward,
+    component: function (resolve) {
+      require(['../views/Product/stewardList.vue'], resolve)
+    },
     meta: {keepAlive: true}
   },
   {
     path: '/Product/ProductDetail',
-    component: ProductDetail
+    component: function (resolve) {
+      require(['../views/Product/ProductDetail.vue'], resolve)
+    }
   },
   {
     path: '/Member/AccountCenter',
-    component: AccountCenter
+    component: function (resolve) {
+      require(['../views/Member/AccountCenter.vue'], resolve)
+    }
   },
   {
     path: '/Member/Login',
-    component: Login
+    component: function (resolve) {
+      require(['../views/Member/Login.vue'], resolve)
+    }
   }
 ]
 export default routes

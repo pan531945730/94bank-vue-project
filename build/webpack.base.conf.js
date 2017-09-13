@@ -6,8 +6,9 @@ var vueLoaderConfig = require('./vue-loader.conf')
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
-
-module.exports = {
+const InlineManifestWebpackPlugin = require('inline-manifest-webpack-plugin')
+const vuxLoader = require('vux-loader')
+let originalConfig = {
   entry: {
     app: './src/main.js'
   },
@@ -71,5 +72,12 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new InlineManifestWebpackPlugin({
+      names: ['webpackManifest']
+    })
+  ]
 }
+const webpackConfig = originalConfig
+module.exports = vuxLoader.merge(webpackConfig, { plugins: ['vux-ui'] })

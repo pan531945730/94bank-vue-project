@@ -2,8 +2,7 @@
   <div class="foot-bar">
       <!-- <a href="https://itunes.apple.com/us/app/94bank-bu-shi-yin-xing-de94bank/id878005164?l=zh&ls=1&mt=8">下载APP</a> -->
       <a href="javascript:void(0);" id="contact_us">联系我们</a>
-      <router-link v-if="!loginStatus" to="/Member/Login">账户中心</router-link>
-      <router-link v-else to="/Member/AccountCenter">账户中心</router-link>
+      <router-link to="/Member/AccountCenter">账户中心</router-link>
       <router-link to="/">理财中心</router-link>
   </div>
 </template>
