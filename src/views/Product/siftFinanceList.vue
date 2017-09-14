@@ -22,8 +22,12 @@
     },
     data () {
       return {
-        isNowPage: true
+        isNowPage: true,
+        uid: this.isLogin()
       }
+    },
+    created () {
+      this.setTitle('精选列表页')
     }
   }
 </script>

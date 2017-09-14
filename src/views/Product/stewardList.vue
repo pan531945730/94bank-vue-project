@@ -22,8 +22,12 @@
     },
     data () {
       return {
-        isNowPage: true
+        isNowPage: true,
+        uid: this.isLogin()
       }
+    },
+    created () {
+      this.setTitle('94管家列表')
     }
   }
 </script>

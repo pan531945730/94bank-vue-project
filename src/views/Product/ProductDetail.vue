@@ -8,6 +8,7 @@
 
 </style>
 <script>
+import { getUrlParams } from '../../common/util'
 import footBar from '../../components/footBar.vue'
 export default{
   components: {
@@ -15,8 +16,11 @@ export default{
   },
   data () {
     return {
-
+      uid: this.isLogin()
     }
+  },
+  created () {
+    this.setTitle(getUrlParams('pName'))
   }
 }
 </script>
