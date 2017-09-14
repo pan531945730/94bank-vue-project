@@ -30,6 +30,8 @@ export function fetch (url, params) {
             resolve(response.data)
           } else if (resData['S'] === 101) {
             Vue.$vux.toast.text('登录超时')
+          } else {
+            Vue.$vux.toast.text(resData['ES'])
           }
         }, err => {
           reject(err)

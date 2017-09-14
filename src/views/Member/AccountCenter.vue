@@ -94,9 +94,12 @@ export default{
   },
   data () {
     return {
+      uid: this.isLogin()
     }
   },
   created () {
+    this.init()
+    this.setTitle('账户中心')
     let data = {
       D: '{}',
       M: 'GetMemberAccount'
@@ -110,6 +113,13 @@ export default{
       })
   },
   methods: {
+    init () {
+      let _this = this
+      if (!_this.uid) {
+        _this.goLogin()
+        return
+      }
+    },
     togglePage (e) {
       let acCont = document.getElementsByClassName('ac-cont')[0]
       let contDiv = acCont.getElementsByTagName('div')

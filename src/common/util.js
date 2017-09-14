@@ -56,12 +56,7 @@ Util.getUrlParams = function (paras, url, place) {
   url = url || window.location.href
   place = typeof (place) === 'number' ? place : 1
   url = url.split('#')[place]
-  var paraData = url.substring(url.indexOf('?') + 1, url.length).split('')
   var paraObj = {}
-  for (var i = 0, len = paraData.length; i < len; i++) {
-    var j = paraData[i]
-    paraObj[j.substring(0, j.indexOf('='))] = decodeURIComponent(j.substring(j.indexOf('=') + 1, j.length))
-  }
   if (paras) {
     return paraObj[paras] ? paraObj[paras] : ''
   }

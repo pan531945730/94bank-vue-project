@@ -37,9 +37,9 @@
 
 </style>
 <script>
-  import { mapActions } from 'vuex'
   import api from '../../fetch/api'
-  import * as _ from '../../ui/tool'
+  import { loginToken } from '../../common/config'
+  import { getUrlParams, cookie } from '../../common/util'
   export default {
     data () {
       return {
@@ -52,9 +52,10 @@
         isimgcode: false
       }
     },
-    computed: mapActions([
-      'setUserInfo'
-    ]),
+    created () {
+      this.setTitle('登录')
+      this.returl = getUrlParams('returl')
+    },
     methods: {
       focus (e) {
         if (e.target.id === 'tel' && e.target.value !== '') {
@@ -110,26 +111,29 @@
       // 用户登录
       _login () {
         if (!this.usertel) {
-          _.alert('请输入手机号')
+          this.$vux.toast.text('请输入手机号')
           return false
         } else if (!/^1[3|4|5|7|8][0-9]\d{8}$/.test(this.usertel)) {
-          _.alert('请输入正确的手机号')
+          this.$vux.toast.text('请输入正确的手机号')
           return false
         }
         if (!this.password) {
-          _.alert('请输入登录密码')
+          this.$vux.toast.text('请输入登录密码')
           return false
         }
         let data = {
           D: '{"phone":"' + this.usertel + '","Pswd":"' + this.password + '"}',
           M: 'MemberLogin'
         }
-        this.$store.dispatch('setLoadingState', true)
         api.postAjax(data)
           .then(res => {
-            this.$store.dispatch('setLoadingState', false)
-            this.$store.dispatch('setUserInfo', true)
-            this.$router.replace('/Member/AccountCenter')
+            let time = 315360000000
+            cookie.set(loginToken, (res.ST || ''), time)
+            if (this.returl) {
+              this.$router.replace(this.returl)
+            } else {
+              this.$router.replace('/Member/AccountCenter')
+            }
           })
           .catch(error => {
             console.log(error)

@@ -6,6 +6,7 @@ import router from './router'
 import Vuex from 'vuex'
 import store from './vuex/store'
 import FastClick from 'fastclick'
+import './common/mixins'
 Vue.config.productionTip = false
 Vue.use(Vuex)
 FastClick.attach(document.body)
