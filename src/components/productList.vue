@@ -75,7 +75,6 @@ export default {
     var countEle = document.getElementsByClassName('countdown')
     for (let i = 0; i < this.timeArr.length; i++) {
       this.contTimeDown(this.timeArr[i], i, countEle[i])
-      console.log(document.getElementsByClassName('countdown')[0])
     }
     for (let i = 0; i < this.cirArr.length; i++) {
       this.drawCir(this.cirArr[i] * 3.6, i)

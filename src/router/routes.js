@@ -1,7 +1,7 @@
 // 配置路由规则
 const routes = [
   {
-    path: '/',
+    path: '*',
     redirect: '/Product/siftFinance'
   },
   {

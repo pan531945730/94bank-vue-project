@@ -142,17 +142,17 @@
     }
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
   .logo {
     padding: 55px 25% 26px 25%;
   }
   .bd-form {
     padding: 0 15px;
-  }
-  .bd-form label {
-    display: -webkit-box;
-    -webkit-box-align: center;
-    padding: 17px 0 8px 0;
+    label {
+      display: -webkit-box;
+      -webkit-box-align: center;
+      padding: 17px 0 8px 0;
+    }
   }
   .bd-form .bd-ico {
     display: block;
